@@ -1,0 +1,22 @@
+In Q1.1 :-
+Three functions countA,countB,countC, were created respectively for 3 threads thrA,thrB,thrC.
+
+First the clock timer for thrA was started, then the thrA was created by pthread_create(). After creating thrA, its scheduling policy was set to SCHED_OTHER using pthread_setschedparam().
+Then the clock timer for thrB was started, and thrB was created. After creating thrB, its scheduling policy was set to SCHED_RR using pthread_setschedparam() and its priority was set using pthread_setschedprio().
+Then the clock timer for thrC was started, and thrC was created. After creating thrC, its scheduling policy was set to SCHED_FIFO using pthread_setschedparam() and its priority was set using pthread_setschedprio().
+The clock timer for the three threads ended after each thread ended their execution. The clock timer for each thread was stopped after pthread_join() command of the respective threads.
+The timings of the three threads were printed and then stored in a text file along with their priorities. This text file was then used to plot the histogram (timings of thread completion vs priority of scheduling class) with the help of gnuplot.
+
+The priority was SCHED_OTHER scheduling policy was always kept at the default value.
+The priorities of SCHED_RR and SCHED_FIFO was changed during each execution.
+
+During the execution of Q1.1, the three threads were run concurrently and their times are printed as soon as their execution ends.
+
+
+In Q1.2 :-
+Three different bash scripts were created ty1.sh,ty2.sh,ty3.sh. Each of these basch scripts had the cd command to the respecive linux kernel folders and then compiled these 3 kernels by make -j4 command.
+In the main program, 3 forks() were called and the 3 child processes used execl() to execute the bash scripts. parent process waited using wait() to wait for the child process to finish. The clock timer started before creating the child process and timer ended after completion of the child process and the time was printed.
+
+Run "make all" to compile the c programs of Q1.1.c and Q1.2.c.
+Run "./q1.1" to run Q1.1.
+Run "./q1.2" to run Q1.2.

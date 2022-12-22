@@ -1,0 +1,16 @@
+reset
+set terminal png size 1200 800
+set output "timing vs priority.png"
+set title "Timing and Scheduler Class"
+
+
+set style data histogram
+set style fill solid
+set ylabel "Time"
+set xlabel "Priority"
+set style histogram clustered
+set xtics
+plot "timing.txt" using 2:xtic(1) title "OTHER", \
+    "timing.txt" using 3 title "RR", \
+    "timing.txt" using 4 title "FIFO"
+
